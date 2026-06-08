@@ -15,65 +15,35 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0a0f;
-  --surface:#13131a;
-  --surface2:#1c1c26;
-  --border:#2a2a3a;
-  --text:#f0f0f8;
-  --muted:#7a7a9a;
-  --accent:#c8f564;
-  --accent-dim:#8ab33a;
-  --danger:#ff5f5f;
-  --warning:#ffb347;
-  --success:#64f5a0;
-  --info:#64c8f5;
-  --gold:#f5d264;
+  --bg:#0a0a0f;--surface:#13131a;--surface2:#1c1c26;--border:#2a2a3a;
+  --text:#f0f0f8;--muted:#7a7a9a;--accent:#c8f564;--danger:#ff5f5f;
+  --warning:#ffb347;--success:#64f5a0;--info:#64c8f5;--gold:#f5d264;
 }
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:'DM Mono',monospace}
 body{display:flex;flex-direction:column;min-height:100vh;overscroll-behavior:none}
-
-/* Header */
 .header{padding:20px 20px 0;display:flex;align-items:center;justify-content:space-between}
 .header h1{font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:-0.5px;color:var(--accent)}
 .header .subtitle{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
-.fx-badge{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:10px;color:var(--muted);cursor:pointer;transition:border-color .2s}
-.fx-badge:hover{border-color:var(--accent)}
+.fx-badge{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-size:10px;color:var(--muted);cursor:pointer}
 .fx-badge span{color:var(--accent);font-weight:500}
-
-/* Main scroll area */
 .scroll{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px}
-
-/* Cards */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;transition:border-color .2s}
-.card-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.card-label i{font-size:14px}
-
-/* Input row */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px}
+.card-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .input-row{display:flex;gap:8px;align-items:center}
-.input-wrap{flex:1;position:relative}
-.input-wrap input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Mono',monospace;font-size:15px;color:var(--text);outline:none;transition:border-color .2s}
-.input-wrap input:focus{border-color:var(--accent)}
-.input-wrap input::placeholder{color:var(--muted)}
-.select-wrap select{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 10px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text);outline:none;cursor:pointer;transition:border-color .2s;-webkit-appearance:none;min-width:80px;text-align:center}
-.select-wrap select:focus{border-color:var(--accent)}
-
-/* Cotizaciones grid */
+.input-wrap{flex:1}
+.input-wrap input,.full-input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Mono',monospace;font-size:15px;color:var(--text);outline:none;transition:border-color .2s}
+.input-wrap input:focus,.full-input:focus{border-color:var(--accent)}
+.input-wrap input::placeholder,.full-input::placeholder{color:var(--muted)}
+.select-wrap select{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 10px;font-family:'DM Mono',monospace;font-size:13px;color:var(--text);outline:none;cursor:pointer;-webkit-appearance:none;min-width:80px;text-align:center}
 .fx-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
 .fx-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
 .fx-name{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .fx-rate-row{display:flex;align-items:baseline;gap:4px}
-.fx-rate{font-size:16px;font-weight:500;color:var(--text)}
 .fx-unit{font-size:10px;color:var(--muted)}
 .fx-input-mini{width:100%;background:transparent;border:none;font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--accent);outline:none;padding:0}
-
-/* Action button */
 .btn-primary{width:100%;background:var(--accent);color:#0a0a0f;font-family:'Fraunces',serif;font-weight:600;font-size:17px;border:none;border-radius:12px;padding:16px;cursor:pointer;letter-spacing:-0.3px;transition:transform .15s,opacity .15s;-webkit-tap-highlight-color:transparent}
 .btn-primary:active{transform:scale(0.97);opacity:.9}
 .btn-primary:disabled{opacity:.4;cursor:not-allowed}
-
-/* Results */
-.results-header{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--text)}
-.results-header strong{font-weight:600;color:var(--accent)}
 .verdict-box{border-radius:14px;padding:16px;margin-top:12px;border:1px solid}
 .verdict-box.win{background:rgba(100,245,160,.06);border-color:rgba(100,245,160,.25)}
 .verdict-box.lose{background:rgba(255,95,95,.06);border-color:rgba(255,95,95,.25)}
@@ -84,48 +54,35 @@ body{display:flex;flex-direction:column;min-height:100vh;overscroll-behavior:non
 .verdict-box.lose .verdict-title{color:var(--danger)}
 .verdict-box.tie .verdict-title{color:var(--info)}
 .verdict-text{font-size:12px;color:var(--muted);line-height:1.6}
-
-/* Price breakdown */
 .breakdown{margin-top:12px;display:flex;flex-direction:column;gap:6px}
 .breakdown-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:8px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)}
 .breakdown-row .label{color:var(--muted)}
-.breakdown-row .val{font-weight:500}
-.breakdown-row.total{background:var(--surface);border-color:var(--accent);color:var(--accent)}
+.breakdown-row.total{border-color:var(--accent);color:var(--accent)}
 .breakdown-row.total .val{font-size:15px}
-
-/* Payment comparison */
 .payment-grid{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .payment-card{border-radius:10px;padding:12px 14px;border:1px solid var(--border);background:var(--surface2);display:flex;justify-content:space-between;align-items:center}
 .payment-card.best{border-color:var(--gold);background:rgba(245,210,100,.05)}
 .payment-name{font-size:12px;color:var(--muted)}
 .payment-name strong{display:block;font-size:13px;color:var(--text);margin-bottom:2px}
 .payment-card.best .payment-name strong{color:var(--gold)}
-.payment-amount{text-align:right}
 .payment-amount .ars{font-size:16px;font-weight:500}
 .payment-card.best .payment-amount .ars{color:var(--gold)}
 .payment-amount .usd{font-size:10px;color:var(--muted)}
 .best-badge{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);background:rgba(245,210,100,.15);border-radius:20px;padding:2px 8px;margin-top:4px;display:inline-block}
-
-/* Loading */
 .loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;gap:12px}
 .spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading-text{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-
-/* Error */
 .error-box{background:rgba(255,95,95,.06);border:1px solid rgba(255,95,95,.25);border-radius:12px;padding:14px;font-size:12px;color:var(--danger);line-height:1.6}
-
-/* Footer note */
-.footnote{font-size:10px;color:var(--muted);text-align:center;padding:12px 20px 24px;line-height:1.6}
-
-/* Tooltip help */
 .help-text{font-size:10px;color:var(--muted);margin-top:6px;line-height:1.5}
-
-/* Tap info */
 .tap-info{font-size:10px;color:var(--muted);text-align:center;padding:4px 0;letter-spacing:.5px}
-
+.ml-items{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.ml-item{font-size:11px;padding:8px 10px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);display:flex;justify-content:space-between;gap:8px;align-items:center}
+.ml-item .ml-title{color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ml-item .ml-price{color:var(--text);white-space:nowrap;font-weight:500}
+.ml-source{font-size:10px;color:var(--muted);margin-top:6px;text-align:right}
+.footnote{font-size:10px;color:var(--muted);text-align:center;padding:12px 20px 24px;line-height:1.6}
 .hidden{display:none!important}
-.divider{height:1px;background:var(--border);margin:4px 0}
 </style>
 </head>
 <body>
@@ -142,17 +99,15 @@ body{display:flex;flex-direction:column;min-height:100vh;overscroll-behavior:non
 
 <div class="scroll" id="main-scroll">
 
-  <!-- Producto -->
   <div class="card">
     <div class="card-label">📦 Producto</div>
-    <input type="text" id="producto" placeholder="ej: iPhone 16, Nike Air Max 95..." style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Mono',monospace;font-size:14px;color:var(--text);outline:none">
+    <input type="text" id="producto" class="full-input" placeholder="ej: iPhone 16, Nike Air Max 95...">
   </div>
 
-  <!-- Precio afuera -->
   <div class="card">
     <div class="card-label">🌍 Precio en el exterior</div>
     <div class="input-row">
-      <div class="input-wrap" style="flex:1">
+      <div class="input-wrap">
         <input type="number" id="precio-ext" placeholder="0.00" inputmode="decimal" min="0" step="0.01">
       </div>
       <div class="select-wrap">
@@ -170,51 +125,49 @@ body{display:flex;flex-direction:column;min-height:100vh;overscroll-behavior:non
     <div class="help-text">Precio que ves en la etiqueta o pantalla del local</div>
   </div>
 
-  <!-- Cotizaciones editables -->
   <div class="card" id="fx-section">
     <div class="card-label">📊 Cotizaciones actuales</div>
     <div class="tap-info">Tocá un valor para editarlo manualmente</div>
-    <div class="fx-grid" id="fx-grid">
+    <div class="fx-grid">
       <div class="fx-item">
         <div class="fx-name">Dólar blue</div>
-        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-blue" type="number" value="…" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
+        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-blue" type="number" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
       </div>
       <div class="fx-item">
         <div class="fx-name">Dólar oficial</div>
-        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-oficial" type="number" value="…" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
+        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-oficial" type="number" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
       </div>
       <div class="fx-item">
         <div class="fx-name">Dólar tarjeta</div>
-        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-tarjeta" type="number" value="…" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
+        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-tarjeta" type="number" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
       </div>
       <div class="fx-item">
-        <div class="fx-name">Dólar cripto/MEP</div>
-        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-mep" type="number" value="…" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
+        <div class="fx-name">MEP / cripto</div>
+        <div class="fx-rate-row"><input class="fx-input-mini" id="fx-mep" type="number" inputmode="decimal"><span class="fx-unit">$/USD</span></div>
       </div>
     </div>
-    <div class="help-text" style="margin-top:8px" id="fx-time">Cargando cotizaciones...</div>
+    <div class="help-text" id="fx-time">Cargando cotizaciones...</div>
   </div>
 
-  <!-- Botón -->
   <button class="btn-primary" id="btn-comparar" onclick="comparar()" disabled>
     Buscar y comparar →
   </button>
 
-  <!-- Resultado container -->
   <div id="resultado" class="hidden"></div>
 
 </div>
 
 <div class="footnote">
-  Los impuestos aplicados son aproximados y pueden variar. Consultá con un asesor fiscal. Cotizaciones de bluelytics.com.ar
+  Precios de referencia vía Mercado Libre Argentina. Cotizaciones: bluelytics.com.ar.<br>
+  Los impuestos son aproximados. Verificá siempre antes de comprar.
 </div>
 
 <script>
-const ANTHROPIC_API = 'https://api.anthropic.com/v1/messages';
-
-// Estado de cotizaciones
 let fx = { blue: null, oficial: null, tarjeta: null, mep: null };
 let fxLoaded = false;
+
+// Tipos de cambio a USD (aproximados)
+const TO_USD = { USD:1, EUR:1.08, GBP:1.26, BRL:0.19, CLP:0.0011, UYU:0.026, MXN:0.057 };
 
 async function cargarCotizaciones() {
   try {
@@ -222,207 +175,177 @@ async function cargarCotizaciones() {
     if (!r.ok) throw new Error();
     const d = await r.json();
     fx.oficial = (d.oficial.value_buy + d.oficial.value_sell) / 2;
-    fx.blue = (d.blue.value_buy + d.blue.value_sell) / 2;
-    // Dólar tarjeta = oficial + PAIS (17.5%) + Ganancias/Bienes personales (30% para monotributo = 15%) = oficial * 1.625 aprox
-    // En 2025: impuesto PAÍS puede estar activo o no. Usamos spread más conservador
-    fx.tarjeta = fx.oficial * 1.625;
-    // MEP aproximado como blue - 3%
-    fx.mep = fx.blue * 0.97;
-    fxLoaded = true;
-    renderFX();
-    document.getElementById('badge-blue').textContent = fx.blue.toFixed(0);
-    document.getElementById('fx-time').textContent = 'Actualizado hace un momento · fuente: bluelytics';
-    document.getElementById('btn-comparar').disabled = false;
-  } catch(e) {
-    document.getElementById('fx-time').textContent = 'Sin conexión — editá los valores manualmente';
-    // Default fallback values
+    fx.blue    = (d.blue.value_buy + d.blue.value_sell) / 2;
+    fx.tarjeta = fx.oficial * 1.625; // oficial + 62.5% (impuesto país 0% + percepción)
+    fx.mep     = fx.blue * 0.97;
+    document.getElementById('fx-time').textContent = 'Actualizado · fuente: bluelytics.com.ar';
+  } catch {
     fx.blue = 1350; fx.oficial = 1000; fx.tarjeta = 1625; fx.mep = 1310;
-    fxLoaded = true;
-    renderFX();
-    document.getElementById('badge-blue').textContent = fx.blue.toFixed(0);
-    document.getElementById('btn-comparar').disabled = false;
+    document.getElementById('fx-time').textContent = 'Sin conexión — valores de ejemplo, editá manualmente';
   }
+  fxLoaded = true;
+  renderFX();
+  document.getElementById('badge-blue').textContent = fx.blue.toFixed(0);
+  document.getElementById('btn-comparar').disabled = false;
 }
 
 function renderFX() {
   ['blue','oficial','tarjeta','mep'].forEach(k => {
     const el = document.getElementById('fx-' + k);
-    if(el && fx[k]) el.value = fx[k].toFixed(0);
+    if (el) el.value = fx[k].toFixed(0);
   });
 }
 
 function leerFX() {
   ['blue','oficial','tarjeta','mep'].forEach(k => {
-    const v = parseFloat(document.getElementById('fx-'+k)?.value);
-    if(!isNaN(v) && v > 0) fx[k] = v;
+    const v = parseFloat(document.getElementById('fx-' + k)?.value);
+    if (!isNaN(v) && v > 0) fx[k] = v;
   });
 }
 
 function scrollToFX() {
-  document.getElementById('fx-section').scrollIntoView({behavior:'smooth',block:'center'});
+  document.getElementById('fx-section').scrollIntoView({behavior:'smooth', block:'center'});
 }
 
-// Tasas de cambio a USD (aproximadas, se actualizan con la API)
-const FX_TO_USD = { USD:1, EUR:1.08, GBP:1.26, BRL:0.19, CLP:0.0011, UYU:0.026, MXN:0.057 };
+// Busca precio en Mercado Libre Argentina usando su API pública
+async function buscarEnMercadoLibre(query) {
+  const url = `https://api.mercadolibre.com/sites/MLA/search?q=${encodeURIComponent(query)}&limit=20`;
+  const r = await fetch(url);
+  if (!r.ok) throw new Error('Error consultando Mercado Libre');
+  const d = await r.json();
 
-function toPesos(amount, moneda) {
-  const usd = amount * (FX_TO_USD[moneda] || 1);
-  return usd;
-}
+  const items = (d.results || []).filter(i =>
+    i.price && i.price > 0 &&
+    i.condition &&
+    i.currency_id === 'ARS'
+  );
 
-// Impuestos Argentina compra en exterior (turismo, monotributista, 2024-2025)
-// Para consumidor que paga en EFECTIVO DÓLARES: sin impuestos extras
-// Para tarjeta de crédito: Dólar oficial + impuesto PAÍS (0% post oct2024, pero puede volver) + RG 6367 percepción ganancias/BP 15% para monotrib/CF
-// En dic 2024: impuesto PAIS = 0%, quedan retenciones de ganancias/bienes personales según categoría
-// Para monotributista: percepción ganancias = 8% sobre monto en ARS tarjeta (puede deducirse luego)
-// IVA no se cobra en compras en exterior en efectivo, sí puede haber en tarjeta como percepción
+  if (items.length === 0) return null;
 
-const IMPUESTOS = {
-  dolares_fisicos: {
-    nombre: 'Dólares físicos (billetes)',
-    desc: 'Pagás directo en USD cash. Sin impuestos adicionales en origen.',
-    impuestos: [], // el costo es simplemente precio * dólar blue
-    cotizacion: () => fx.blue,
-    extra_pct: 0
-  },
-  transferencia_usd: {
-    nombre: 'Transferencia bancaria USD',
-    desc: 'Pagás desde cuenta bancaria en dólares (cuenta comitente o similares).',
-    impuestos: ['Tipo de cambio MEP/cripto'],
-    cotizacion: () => fx.mep,
-    extra_pct: 0
-  },
-  tarjeta_credito: {
-    nombre: 'Tarjeta de crédito ARS',
-    desc: 'Cotización tarjeta (oficial + retenciones). Incluye percepción 8% (recuperable ante AFIP).',
-    impuestos: ['Dólar tarjeta (oficial + 62.5%)', 'Percepción ganancias 8% (recuperable)'],
-    cotizacion: () => fx.tarjeta,
-    extra_pct: 0.08 // percepcion ganancias monotrib que se puede recuperar
-  }
-};
+  // Separar nuevos y usados
+  const nuevos  = items.filter(i => i.condition === 'new');
+  const usados  = items.filter(i => i.condition === 'used');
+  const fuente  = nuevos.length >= 3 ? nuevos : items;
 
-async function buscarPrecioArgentina(producto) {
-  const prompt = `Eres un asistente especializado en precios en Argentina. 
-El usuario quiere saber el precio APROXIMADO de "${producto}" en Buenos Aires, Argentina.
-Buscá el precio promedio al consumidor final en ARS (pesos argentinos) de este producto en Argentina hoy.
-Respondé SOLO con un JSON válido, sin texto adicional, sin markdown:
-{
-  "encontrado": true/false,
-  "precio_ars": número o null,
-  "descripcion": "breve descripción del producto y fuente del precio",
-  "rango_min": número o null,
-  "rango_max": número o null,
-  "nota": "observación breve"
-}
-Si no podés determinar el precio con certeza, estimá basándote en el contexto de precios de Argentina.`;
+  // Mediana de precios
+  const precios = fuente.map(i => i.price).sort((a,b) => a - b);
+  const mid = Math.floor(precios.length / 2);
+  const mediana = precios.length % 2 === 0
+    ? (precios[mid-1] + precios[mid]) / 2
+    : precios[mid];
 
-  const resp = await fetch(ANTHROPIC_API, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 400,
-      tools: [{type:'web_search_20250305',name:'web_search'}],
-      messages: [{role:'user',content: prompt}]
-    })
-  });
-  
-  if(!resp.ok) throw new Error('API error ' + resp.status);
-  const data = await resp.json();
-  
-  let text = '';
-  for(const block of data.content) {
-    if(block.type === 'text') text += block.text;
-  }
-  
-  const clean = text.replace(/```json|```/g,'').trim();
-  try {
-    const parsed = JSON.parse(clean);
-    return parsed;
-  } catch {
-    const match = clean.match(/\{[\s\S]+\}/);
-    if(match) return JSON.parse(match[0]);
-    throw new Error('No se pudo parsear respuesta');
-  }
+  const min = precios[0];
+  const max = precios[precios.length - 1];
+
+  // Top 5 items para mostrar
+  const top = fuente.slice(0, 5).map(i => ({
+    title: i.title,
+    price: i.price,
+    condition: i.condition,
+    link: i.permalink
+  }));
+
+  return { mediana, min, max, top, total: items.length, soloNuevos: nuevos.length >= 3 };
 }
 
 function formatARS(n) {
-  return new Intl.NumberFormat('es-AR', {style:'currency',currency:'ARS',maximumFractionDigits:0}).format(n);
+  return new Intl.NumberFormat('es-AR', {style:'currency', currency:'ARS', maximumFractionDigits:0}).format(n);
 }
 function formatUSD(n) {
-  return new Intl.NumberFormat('es-AR', {style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+  return new Intl.NumberFormat('es-AR', {style:'currency', currency:'USD', minimumFractionDigits:2, maximumFractionDigits:2}).format(n);
 }
 
+const METODOS = [
+  {
+    key: 'blue',
+    nombre: 'Dólares físicos (billetes)',
+    detalle: 'Tipo de cambio blue · sin impuestos adicionales',
+    getCotiz: () => fx.blue,
+    extraPct: 0,
+    extraLabel: null
+  },
+  {
+    key: 'mep',
+    nombre: 'Transferencia bancaria USD',
+    detalle: 'Tipo de cambio MEP/cripto (≈blue −3%)',
+    getCotiz: () => fx.mep,
+    extraPct: 0,
+    extraLabel: null
+  },
+  {
+    key: 'tarjeta',
+    nombre: 'Tarjeta de crédito ARS',
+    detalle: 'Oficial +62.5% · +8% percepción recuperable',
+    getCotiz: () => fx.tarjeta,
+    extraPct: 0.08,
+    extraLabel: '+8% recuperable ante AFIP'
+  }
+];
+
 async function comparar() {
-  const producto = document.getElementById('producto').value.trim();
-  const precioExt = parseFloat(document.getElementById('precio-ext').value);
-  const monedaExt = document.getElementById('moneda-ext').value;
-  
-  if(!producto) { alert('Ingresá el nombre del producto'); return; }
-  if(!precioExt || precioExt <= 0) { alert('Ingresá el precio en el exterior'); return; }
-  
+  const producto   = document.getElementById('producto').value.trim();
+  const precioExt  = parseFloat(document.getElementById('precio-ext').value);
+  const monedaExt  = document.getElementById('moneda-ext').value;
+
+  if (!producto)              { alert('Ingresá el nombre del producto'); return; }
+  if (!precioExt || precioExt <= 0) { alert('Ingresá el precio en el exterior'); return; }
+
   leerFX();
-  
+
   const res = document.getElementById('resultado');
   res.classList.remove('hidden');
-  res.innerHTML = `<div class="loading"><div class="spinner"></div><div class="loading-text">Buscando precio en Argentina...</div></div>`;
+  res.innerHTML = `<div class="loading"><div class="spinner"></div><div class="loading-text">Buscando en Mercado Libre...</div></div>`;
   document.getElementById('btn-comparar').disabled = true;
-  
+
   try {
-    const argData = await buscarPrecioArgentina(producto);
-    
-    // Precio en USD de lo que querés comprar afuera
-    const precioUSD = precioExt * (FX_TO_USD[monedaExt] || 1);
-    const precioARSOriginal = monedaExt === 'ARS' ? precioExt : null;
-    
-    // Calcular costo en ARS para cada método de pago
-    const metodos = Object.entries(IMPUESTOS).map(([key, m]) => {
-      const cotiz = m.cotizacion();
+    const mlData = await buscarEnMercadoLibre(producto);
+
+    // Precio en USD del producto en el exterior
+    const precioUSD = precioExt * (TO_USD[monedaExt] || 1);
+
+    // Calcular costo en ARS por cada método de pago
+    const metodos = METODOS.map(m => {
+      const cotiz   = m.getCotiz();
       const arsBase = precioUSD * cotiz;
-      const arsTotal = arsBase * (1 + m.extra_pct);
-      return { key, ...m, cotiz, arsBase, arsTotal };
-    });
-    
-    // Ordenar por precio final ARS
-    metodos.sort((a,b) => a.arsTotal - b.arsTotal);
-    const mejorMetodo = metodos[0];
-    
-    // Comparar con Argentina
-    const precioArg = argData.precio_ars;
-    const mejorExterior = mejorMetodo.arsTotal;
-    const diff = precioArg ? ((mejorExterior - precioArg) / precioArg * 100) : null;
-    
-    let veredicto, vClass, vEmoji;
-    if(diff === null) {
-      veredicto = `No se encontró precio de referencia en Argentina para <em>${producto}</em>. Verificá manualmente.`;
-      vClass = 'tie'; vEmoji = '🔍';
-    } else if(diff < -5) {
-      const ahorro = precioArg - mejorExterior;
-      veredicto = `¡Conviene comprarlo afuera! Ahorrás aproximadamente ${formatARS(ahorro)} (${Math.abs(diff).toFixed(0)}% más barato que en Argentina).`;
-      vClass = 'win'; vEmoji = '✈️';
-    } else if(diff > 5) {
-      const extra = mejorExterior - precioArg;
-      veredicto = `Conviene comprarlo en Argentina. Afuera pagás ${formatARS(extra)} más (${diff.toFixed(0)}% más caro que en AR).`;
-      vClass = 'lose'; vEmoji = '🇦🇷';
+      const arsTotal = arsBase * (1 + m.extraPct);
+      return { ...m, cotiz, arsBase, arsTotal };
+    }).sort((a, b) => a.arsTotal - b.arsTotal);
+
+    const mejor       = metodos[0];
+    const precioArg   = mlData ? mlData.mediana : null;
+    const diff        = precioArg ? ((mejor.arsTotal - precioArg) / precioArg * 100) : null;
+
+    let vClass, vEmoji, vTitle, vText;
+    if (diff === null) {
+      vClass = 'tie'; vEmoji = '🔍'; vTitle = 'Sin referencia en AR';
+      vText = `No se encontraron resultados en Mercado Libre para <em>${producto}</em>. Probá con un nombre más genérico.`;
+    } else if (diff < -5) {
+      const ahorro = precioArg - mejor.arsTotal;
+      vClass = 'win'; vEmoji = '✈️'; vTitle = '¡Conviene comprarlo afuera!';
+      vText = `Ahorrás aprox. ${formatARS(ahorro)} (${Math.abs(diff).toFixed(0)}% más barato que en Argentina pagando con ${mejor.nombre.toLowerCase()}).`;
+    } else if (diff > 5) {
+      const extra = mejor.arsTotal - precioArg;
+      vClass = 'lose'; vEmoji = '🇦🇷'; vTitle = 'Conviene comprarlo en Argentina';
+      vText = `Afuera pagás ${formatARS(extra)} más (${diff.toFixed(0)}% más caro que en AR, incluso con el método más barato).`;
     } else {
-      veredicto = `El precio es similar. La diferencia es menor al 5% — considerá el esfuerzo y el riesgo de aduana.`;
-      vClass = 'tie'; vEmoji = '⚖️';
+      vClass = 'tie'; vEmoji = '⚖️'; vTitle = 'Precio similar';
+      vText = `La diferencia es menor al 5%. Considerá el esfuerzo, garantía y límite de aduana antes de decidir.`;
     }
-    
+
     let html = `
     <div class="card">
-      <div class="card-label">🔎 Resultado para ${producto}</div>
-      
+      <div class="card-label">🔎 Resultado · ${producto}</div>
+
       <div class="verdict-box ${vClass}">
         <div class="verdict-emoji">${vEmoji}</div>
-        <div class="verdict-title">${vClass==='win'?'Comprá afuera':vClass==='lose'?'Comprá en Argentina':'Similar precio'}</div>
-        <div class="verdict-text">${veredicto}</div>
+        <div class="verdict-title">${vTitle}</div>
+        <div class="verdict-text">${vText}</div>
       </div>
-      
+
       <div class="breakdown">
         <div class="breakdown-row">
           <span class="label">Precio exterior (${monedaExt})</span>
-          <span class="val">${monedaExt} ${precioExt.toLocaleString('es-AR', {maximumFractionDigits:2})}</span>
+          <span class="val">${monedaExt} ${precioExt.toLocaleString('es-AR',{maximumFractionDigits:2})}</span>
         </div>
         <div class="breakdown-row">
           <span class="label">Equivalente en USD</span>
@@ -430,64 +353,77 @@ async function comparar() {
         </div>
         ${precioArg ? `
         <div class="breakdown-row">
-          <span class="label">Precio Argentina (ref.)</span>
+          <span class="label">Mediana Mercado Libre AR</span>
           <span class="val" style="color:var(--info)">${formatARS(precioArg)}</span>
         </div>
-        ${argData.rango_min && argData.rango_max ? `
         <div class="breakdown-row">
-          <span class="label" style="font-size:10px">Rango en AR</span>
-          <span class="val" style="font-size:11px;color:var(--muted)">${formatARS(argData.rango_min)} – ${formatARS(argData.rango_max)}</span>
-        </div>` : ''}
-        ` : `<div class="breakdown-row"><span class="label">Precio en Argentina</span><span class="val" style="color:var(--muted)">No encontrado</span></div>`}
+          <span class="label" style="font-size:10px">Rango en ML</span>
+          <span class="val" style="font-size:11px;color:var(--muted)">${formatARS(mlData.min)} – ${formatARS(mlData.max)}</span>
+        </div>
+        ` : `
+        <div class="breakdown-row">
+          <span class="label">Precio en Argentina</span>
+          <span class="val" style="color:var(--muted)">No encontrado</span>
+        </div>`}
       </div>
-      
-      ${argData.nota ? `<div class="help-text" style="margin-top:8px">ℹ️ ${argData.nota}</div>` : ''}
+
+      ${mlData ? `
+      <div class="help-text" style="margin-top:10px">
+        Basado en ${mlData.total} publicaciones ${mlData.soloNuevos ? 'nuevas' : ''} en ML Argentina
+      </div>
+      <div class="ml-items">
+        ${mlData.top.map(i => `
+        <div class="ml-item">
+          <span class="ml-title">${i.title}</span>
+          <span class="ml-price">${formatARS(i.price)}</span>
+        </div>`).join('')}
+      </div>
+      <div class="ml-source">Fuente: Mercado Libre Argentina</div>
+      ` : ''}
     </div>
-    
+
     <div class="card">
       <div class="card-label">💳 ¿Cómo conviene pagar?</div>
-      <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Costo real en pesos según cada método:</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:10px">Costo real en pesos según método de pago:</div>
       <div class="payment-grid">
         ${metodos.map((m, i) => `
         <div class="payment-card ${i===0?'best':''}">
           <div class="payment-name">
             <strong>${m.nombre}</strong>
-            ${m.impuestos.length > 0 ? m.impuestos.map(t=>`<span style="font-size:10px;display:block;color:var(--muted)">${t}</span>`).join('') : ''}
-            ${i===0?`<span class="best-badge">★ Más económico</span>`:''}
+            <span style="font-size:10px;color:var(--muted)">${m.detalle}</span>
+            ${i===0 ? '<span class="best-badge">★ Más económico</span>' : ''}
           </div>
           <div class="payment-amount">
             <div class="ars">${formatARS(m.arsTotal)}</div>
             <div class="usd">≈ ${formatUSD(m.arsTotal / fx.blue)} al blue</div>
-            ${m.extra_pct > 0 ? `<div style="font-size:9px;color:var(--warning);margin-top:2px">+${(m.extra_pct*100).toFixed(0)}% recuperable</div>` : ''}
+            ${m.extraLabel ? `<div style="font-size:9px;color:var(--warning);margin-top:2px">${m.extraLabel}</div>` : ''}
           </div>
-        </div>
-        `).join('')}
+        </div>`).join('')}
       </div>
-      
       <div class="help-text" style="margin-top:12px">
-        <strong>Sobre el dólar tarjeta:</strong> desde oct/2024 el Impuesto PAIS es 0%, pero quedan retenciones de Ganancias/Bienes Personales (8% para monotributistas, recuperable en declaración jurada). El tipo de cambio tarjeta es oficial + 62.5%.<br><br>
-        <strong>Efectivo USD:</strong> usás el dólar blue. No hay impuestos en destino, pero considerá el riesgo de llevarlo.<br><br>
-        <strong>Transferencia USD:</strong> usás dólar MEP/cripto (≈blue -3%). Sin retenciones extras.
+        <strong>Dólar tarjeta:</strong> desde oct/2024 el Impuesto PAIS es 0%. Queda retención ganancias 8% (monotributista), recuperable en DJ anual.<br><br>
+        <strong>Efectivo USD:</strong> cotización blue, sin impuestos en destino.<br><br>
+        <strong>Transferencia USD:</strong> MEP o cripto, similar al blue sin retenciones.
       </div>
     </div>
-    
+
     <div class="card" style="border-color:rgba(200,245,100,.2)">
-      <div class="card-label">⚠️ Aduana Argentina</div>
+      <div class="card-label">⚠️ Límite de aduana</div>
       <div style="font-size:12px;color:var(--muted);line-height:1.7">
-        Ingresás libre de impuestos hasta <strong style="color:var(--accent)">USD 500</strong> en efectivo o USD 300 por vía aérea sin declarar.<br><br>
-        Por encima de ese monto: <strong style="color:var(--warning)">50% de arancel</strong> + IVA 21% sobre el excedente.<br><br>
-        Un solo artículo mayor a USD 1000 siempre debe declararse independientemente del total.
+        Ingresás libre de impuestos hasta <strong style="color:var(--accent)">USD 500</strong> por vía aérea o USD 300 terrestre/fluvial (por persona, por año).<br><br>
+        Sobre el excedente: <strong style="color:var(--warning)">50% de arancel + IVA 21%</strong>.<br><br>
+        Un artículo mayor a USD 1.000 siempre debe declararse, independientemente del total acumulado.
       </div>
     </div>`;
-    
+
     res.innerHTML = html;
-    
+
   } catch(err) {
-    res.innerHTML = `<div class="error-box">⚠️ Error al buscar precios: ${err.message}<br><br>Chequeá tu conexión a internet e intentá de nuevo.</div>`;
+    res.innerHTML = `<div class="error-box">⚠️ Error: ${err.message}<br><br>Verificá tu conexión e intentá de nuevo.</div>`;
   }
-  
+
   document.getElementById('btn-comparar').disabled = false;
-  res.scrollIntoView({behavior:'smooth',block:'start'});
+  res.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 // Register service worker
@@ -495,13 +431,7 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').catch(() => {});
 }
 
-// Init
 cargarCotizaciones();
-
-// Habilitar botón cuando hay datos
-document.getElementById('precio-ext').addEventListener('input', () => {
-  if(fxLoaded) document.getElementById('btn-comparar').disabled = false;
-});
 </script>
 </body>
 </html>
